@@ -19,6 +19,12 @@ public class BtnController : MonoBehaviour
         PlayerPrefs.DeleteAll();  //기록들 다 사라지고 새로시작
         SceneManager.LoadScene("GameScene");
     }
+    public void stop_restartBtn() 
+    {
+
+        PlayerPrefs.DeleteAll();  //기록들 다 사라지고 새로시작
+        SceneManager.LoadScene("StartScene");
+    }
     public void AgainBtn()
     {
         if (b_stopcv)
