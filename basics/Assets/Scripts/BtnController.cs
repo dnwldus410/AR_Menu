@@ -17,12 +17,6 @@ public class BtnController : MonoBehaviour
     {
 
         PlayerPrefs.DeleteAll();  //기록들 다 사라지고 새로시작
-        SceneManager.LoadScene("GameScene");
-    }
-    public void stop_restartBtn() 
-    {
-
-        PlayerPrefs.DeleteAll();  //기록들 다 사라지고 새로시작
         SceneManager.LoadScene("StartScene");
     }
     public void AgainBtn()
@@ -43,9 +37,9 @@ public class BtnController : MonoBehaviour
 
 
     }
-   /* public void exppBtn()
+    public void exppBtn()
     {
-    
+    /*
         if (b_exppcv == false)
         {
             exppcv.SetActive(true);
@@ -57,9 +51,9 @@ public class BtnController : MonoBehaviour
             exppcv.SetActive(false);
           
             b_exppcv = false;
-        }
+        }*/
     }
-  */
+  
     public void StopBtn()
     {
         if (b_stopcv == false)
