@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Lean/GUI/Examples/16 Tooltip.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
