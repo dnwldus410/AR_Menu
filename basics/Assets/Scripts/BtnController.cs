@@ -8,32 +8,41 @@ public class BtnController : MonoBehaviour
     public GameObject stopcv;
     public GameObject Topbar;
    // public GameObject exppcv;
-    private bool b_stopcv=false;
+    private bool pause=false;
     public AudioSource btnclickSound;
+    private float fixedDeltatime;
     // private bool b_exppcv = false;
-    void Update()
+
+    private void Awake()
     {
-      
-            if (b_stopcv == true)
-            {
-                
-                
-                Time.timeScale = 0;
-            Topbar.SetActive(false);
-            stopcv.SetActive(true);
+        {
+            this.fixedDeltatime = Time.fixedDeltaTime;
         }
     }
-    public void startBtn()
+
+    void Update()
+    {
+        if (pause)
+        {
+            Debug.Log("pausd");
+            Time.timeScale = 0;
+            Topbar.SetActive(false);
+            stopcv.SetActive(true);
+           
+        }
+
+    }
+    public void startBtn() //startscene->gamescene
     {
         SceneManager.LoadScene("GameScene");
     }
-    public void restartBtn() //=okbtn
+    public void restartBtn() //=okbtn 각 특정점수제거하면서 새로시작
     {
         btnclickSound.Play();
 
         SceneManager.LoadScene("GameScene");
     }
-    public void quit_restartBtn() //=okbtn
+    public void quit_restartBtn() // 아예 처음부터
     {
         btnclickSound.Play();
 
@@ -41,7 +50,7 @@ public class BtnController : MonoBehaviour
     }
  
 
-    public void OkBtn() //지도화면 ,= quitbtn
+    public void OkBtn() //지도화면 , application.quit()을 하면 유니티프로그램이 아예 꺼지는데 팝업창이 어떤 건지 확인후 고치겠습니다.
     {
         btnclickSound.Play();
         Application.Quit();
@@ -50,17 +59,20 @@ public class BtnController : MonoBehaviour
     }
     public void StopBtn()
     {
-        btnclickSound.Play();
-        b_stopcv = true;
        
+        btnclickSound.Play();
+        pause = true;
 
+      
         if (Time.timeScale == 0)
         {
             stopcv.SetActive(false);
             Topbar.SetActive(true);
-            Time.timeScale = 1;
-            b_stopcv = false;
+            Time.timeScale = 1f;
+            pause = false;
+            
         }
+        Time.fixedDeltaTime = this.fixedDeltatime * Time.timeScale;
     }
 
  
