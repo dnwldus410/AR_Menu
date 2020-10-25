@@ -24,7 +24,6 @@ public class BtnController : MonoBehaviour
     {
         if (pause)
         {
-            Debug.Log("pausd");
             Time.timeScale = 0;
             Topbar.SetActive(false);
             stopcv.SetActive(true);
@@ -39,7 +38,15 @@ public class BtnController : MonoBehaviour
     public void restartBtn() //=okbtn 각 특정점수제거하면서 새로시작
     {
         btnclickSound.Play();
+        if (Time.timeScale == 0)
+        {
+            stopcv.SetActive(false);
+            Topbar.SetActive(true);
+            Time.timeScale = 1f;
+            pause = false;
 
+        }
+        Time.fixedDeltaTime = this.fixedDeltatime * Time.timeScale;
         SceneManager.LoadScene("GameScene");
     }
     public void quit_restartBtn() // 아예 처음부터

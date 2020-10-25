@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -45,33 +46,70 @@ public class GameManager : MonoBehaviour
             arrowscore = PlayerPrefs.GetInt("arrowWinScore");
 
 
-            if (golfscore == 0 || kitescore==0||tuhoscore==0||arrowscore==0)
-                {
-                    Losecv.SetActive(true);
-                }
-               else if (golfscore == 1 || kitescore == 1 || tuhoscore == 1 || arrowscore == 1)
-                {
-
-                    Wincv.SetActive(true);
-                    heartscore[2].SetActive(false);
-                    heartscore[1].SetActive(false);
-
+            if (!(golfscore == 0 || kitescore == 0 || tuhoscore == 0 || arrowscore == 0))
+            {
+                Losecv.SetActive(true);
             }
-                else if (golfscore == 2 || kitescore == 2 || tuhoscore == 2 || arrowscore == 2)
-                {
-
-                    Wincv.SetActive(true);
+            else if (golfscore == 1 || kitescore == 1 || tuhoscore == 1 || arrowscore == 1)
+            {
                 heartscore[2].SetActive(false);
+                heartscore[1].SetActive(false);
+                heartscore[0].SetActive(false);
+                Wincv.SetActive(true);
+
+                 StartCoroutine(Scoreanimation(1));
 
             }
-               else if (golfscore == 3 || kitescore == 3 || tuhoscore == 3 || arrowscore == 3)
-                {
+            else if (golfscore == 2 || kitescore == 2 || tuhoscore == 2 || arrowscore == 2)
+            {
+                heartscore[2].SetActive(false);
+                heartscore[1].SetActive(false);
+                heartscore[0].SetActive(false);
+                Wincv.SetActive(true);
 
-                    Wincv.SetActive(true);
+                 StartCoroutine(Scoreanimation(2));
 
-                }
+            }
+            else if (golfscore == 3 || kitescore == 3 || tuhoscore == 3 || arrowscore == 3)
+            {
+                heartscore[2].SetActive(false);
+                heartscore[1].SetActive(false);
+                heartscore[0].SetActive(false);
+
+                Wincv.SetActive(true);
+
+                   StartCoroutine(Scoreanimation(3));
+
+            }
+        } 
             
-            
+        
+        
+    }
+    private IEnumerator Scoreanimation(int i)
+    {
+      
+        if (1 == 1)
+        {
+            yield return new WaitForSeconds(0.10f);
+            heartscore[0].SetActive(true);
         }
+        if (i == 2)
+        {
+            yield return new WaitForSeconds(0.10f);
+            heartscore[0].SetActive(true);
+            yield return new WaitForSeconds(0.01f);
+            heartscore[1].SetActive(true);
+        }
+        if (i == 3)
+        {
+            yield return new WaitForSeconds(0.01f);
+            heartscore[0].SetActive(true);
+            yield return new WaitForSeconds(0.01f);
+            heartscore[1].SetActive(true);
+            yield return new WaitForSeconds(0.01f);
+            heartscore[2].SetActive(true);
+        }
+
     }
 }
