@@ -5,10 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 6a342d26c92465e4e89e7338ae0e1c69
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Menu/Scenes/StartScene.unity
+    guid: 21ddfb5190bca05469f39686187b28a7
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: bf431bed1eb63874a856bd4084779e15
-  m_configObjects: {}
+    path: Assets/Palace_golf/Scenes/g_Scene.unity
+    guid: 2eefdd9358847e549a51163b98bc252c
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: cbd22ef648448b34b93bc854984dc0d5, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 554282de942ec2246a144d4c8a25bb13, type: 2}
